@@ -20,7 +20,7 @@ public class SiteConfig {
     private String tituloPrincipal = "Software que se adapta a tu negocio";
 
     @Column(length = 400)
-    private String subtitulo = "Desarrollamos software a medida, sistemas de gestion y aplicaciones web que resuelven necesidades concretas.";
+    private String subtitulo = "Desarrollamos software a medida, sistemas de gestión y aplicaciones web que resuelven necesidades concretas.";
 
     @Column(length = 120)
     private String textoBotonPrimario = "Ver sistemas";
@@ -152,12 +152,46 @@ public class SiteConfig {
     private Integer sisCardRadioPx;
     private Integer sisCardPaddingPx;
 
-    // ---- SEO basico ----
+
+    // ---- Marca y textos de las secciones (null/vacio = el sitio usa su texto por defecto) ----
     @Column(length = 120)
-    private String seoTitle = "LYNXA Software - Desarrollo de software a medida";
+    private String nombreEmpresa = "LYNXA Sistemas"; // se muestra cuando no hay logo
+
+    @Column(length = 120)
+    private String serviciosTitulo;
+    @Column(length = 300)
+    private String serviciosSubtitulo;
+
+    @Column(length = 120)
+    private String sistemasTitulo;
+    @Column(length = 300)
+    private String sistemasSubtitulo;
+
+    @Column(length = 120)
+    private String contactoTitulo;
+    @Column(length = 300)
+    private String contactoSubtitulo;
 
     @Column(length = 300)
-    private String seoDescription = "Sistemas de gestion, aplicaciones web y desarrollo de software a medida para negocios.";
+    private String footerTexto;
+
+    // ---- Fondo del Hero en video (sin sonido, en bucle) y fondo de toda la pagina ----
+    @Column(length = 300)
+    private String heroVideoUrl;
+
+    @Column(length = 300)
+    private String fondoPaginaImagen;
+    @Column(length = 20)
+    private String fondoPaginaPosicion = "center center";
+    // 0 a 90: cuanto "tapa" una capa del color de fondo sobre la imagen para que el texto se lea.
+    private Integer fondoPaginaVelo = 40;
+
+    // ---- SEO basico ----
+    @Column(length = 120)
+    private String seoTitle = "LYNXA Sistemas | Software y sistemas de gestión a medida";
+
+    @Column(length = 300)
+    private String seoDescription = "Sistemas de gestión, aplicaciones web y desarrollo de software a medida para negocios.";
 
     // getters y setters
     public Long getId() { return id; }
@@ -268,4 +302,29 @@ public class SiteConfig {
     public void setSeoTitle(String v) { this.seoTitle = v; }
     public String getSeoDescription() { return seoDescription; }
     public void setSeoDescription(String v) { this.seoDescription = v; }
+
+    public String getNombreEmpresa() { return nombreEmpresa; }
+    public void setNombreEmpresa(String v) { this.nombreEmpresa = v; }
+    public String getServiciosTitulo() { return serviciosTitulo; }
+    public void setServiciosTitulo(String v) { this.serviciosTitulo = v; }
+    public String getServiciosSubtitulo() { return serviciosSubtitulo; }
+    public void setServiciosSubtitulo(String v) { this.serviciosSubtitulo = v; }
+    public String getSistemasTitulo() { return sistemasTitulo; }
+    public void setSistemasTitulo(String v) { this.sistemasTitulo = v; }
+    public String getSistemasSubtitulo() { return sistemasSubtitulo; }
+    public void setSistemasSubtitulo(String v) { this.sistemasSubtitulo = v; }
+    public String getContactoTitulo() { return contactoTitulo; }
+    public void setContactoTitulo(String v) { this.contactoTitulo = v; }
+    public String getContactoSubtitulo() { return contactoSubtitulo; }
+    public void setContactoSubtitulo(String v) { this.contactoSubtitulo = v; }
+    public String getFooterTexto() { return footerTexto; }
+    public void setFooterTexto(String v) { this.footerTexto = v; }
+    public String getHeroVideoUrl() { return heroVideoUrl; }
+    public void setHeroVideoUrl(String v) { this.heroVideoUrl = v; }
+    public String getFondoPaginaImagen() { return fondoPaginaImagen; }
+    public void setFondoPaginaImagen(String v) { this.fondoPaginaImagen = v; }
+    public String getFondoPaginaPosicion() { return fondoPaginaPosicion; }
+    public void setFondoPaginaPosicion(String v) { this.fondoPaginaPosicion = v; }
+    public Integer getFondoPaginaVelo() { return fondoPaginaVelo; }
+    public void setFondoPaginaVelo(Integer v) { this.fondoPaginaVelo = v; }
 }

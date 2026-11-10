@@ -39,6 +39,7 @@ public class AdminController {
     private final ServicioRepository servicioRepository;
     private final SistemaRepository sistemaRepository;
     private final AdminUserRepository adminUserRepository;
+    private final com.fasterxml.jackson.databind.ObjectMapper objectMapper;
 
     @Value("${app.uploads.dir}")
     private String uploadsDir;
@@ -46,7 +47,9 @@ public class AdminController {
     public AdminController(SiteConfigRepository siteConfigRepository,
                             ServicioRepository servicioRepository,
                             SistemaRepository sistemaRepository,
-                            AdminUserRepository adminUserRepository) {
+                            AdminUserRepository adminUserRepository,
+                           com.fasterxml.jackson.databind.ObjectMapper objectMapper) {
+        this.objectMapper = objectMapper;
         this.siteConfigRepository = siteConfigRepository;
         this.servicioRepository = servicioRepository;
         this.sistemaRepository = sistemaRepository;
@@ -69,6 +72,22 @@ public class AdminController {
     public SiteConfig updateConfig(@Valid @RequestBody SiteConfig nuevo) {
         nuevo.setId(1L);
         return siteConfigRepository.save(nuevo);
+    }
+
+    /**
+     * Guardado parcial: actualiza SOLO los campos que llegan en el cuerpo y deja
+     * el resto como esta. Cada pestana del panel usa este endpoint, asi que
+     * guardar "Contacto" nunca pisa lo que se cambio en "Apariencia" desde otra
+     * pestana o dispositivo.
+     */
+    @PatchMapping("/config")
+    public SiteConfig patchConfig(@RequestBody Map<String, Object> cambios) throws com.fasterxml.jackson.databind.JsonMappingException {
+        SiteConfig actual = siteConfigRepository.findById(1L).orElseGet(SiteConfig::new);
+        Map<String, Object> limpios = new java.util.HashMap<>(cambios);
+        limpios.remove("id");
+        objectMapper.updateValue(actual, limpios);
+        actual.setId(1L);
+        return siteConfigRepository.save(actual);
     }
 
     // ---------------- SERVICIOS (CRUD) ----------------

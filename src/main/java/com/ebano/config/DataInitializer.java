@@ -110,13 +110,13 @@ public class DataInitializer implements CommandLineRunner {
             s1.setOrden(1);
 
             Servicio s2 = new Servicio();
-            s2.setTitulo("Sistemas de gestion");
+            s2.setTitulo("Sistemas de gestión");
             s2.setDescripcion("Soluciones para administrar ventas, clientes, productos, reservas y stock.");
             s2.setOrden(2);
 
             Servicio s3 = new Servicio();
             s3.setTitulo("Desarrollo web");
-            s3.setDescripcion("Paginas y aplicaciones web profesionales, rapidas y responsive.");
+            s3.setDescripcion("Páginas y aplicaciones web profesionales, rápidas y responsive.");
             s3.setOrden(3);
 
             servicioRepository.saveAll(List.of(s1, s2, s3));
@@ -125,12 +125,12 @@ public class DataInitializer implements CommandLineRunner {
 
         if (sistemaRepository.count() == 0) {
             Sistema demo = new Sistema();
-            demo.setNombre("Sistema de gestion comercial");
-            demo.setSlug("sistema-de-gestion-comercial");
-            demo.setDescripcionCorta("Punto de venta, caja, stock y reportes para un comercio.");
-            demo.setDescripcionCompleta("Ejemplo de ficha de sistema. Edita este texto, las imagenes, "
-                    + "las caracteristicas y el estado desde el panel de administracion (/admin/sistemas).");
-            demo.setCategoria("Gestion comercial");
+            demo.setNombre("Mostrador");
+            demo.setSlug("mostrador");
+            demo.setDescripcionCorta("Punto de venta, caja, stock y reportes para comercios.");
+            demo.setDescripcionCompleta("Ejemplo de ficha de sistema. Editá este texto, las imágenes, "
+                    + "las características y el estado desde el panel de administración.");
+            demo.setCategoria("Gestión comercial");
             demo.setEstado(Sistema.Estado.PERSONALIZABLE);
             demo.setOrden(1);
             demo.setCaracteristicas(List.of(
