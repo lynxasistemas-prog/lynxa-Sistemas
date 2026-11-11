@@ -41,7 +41,14 @@ public class Sistema {
     @Column(nullable = false)
     private Estado estado = Estado.DISPONIBLE;
 
+    /** Precio de pago único. */
     private Double precio;
+
+    /** Precio mensual (opcional; se pueden ofrecer varios tipos de pago a la vez). */
+    private Double precioMensual;
+
+    /** Precio anual (opcional). */
+    private Double precioAnual;
 
     @Enumerated(EnumType.STRING)
     @Column(length = 20)
@@ -107,6 +114,10 @@ public class Sistema {
     public void setEstado(Estado v) { this.estado = v; }
     public Double getPrecio() { return precio; }
     public void setPrecio(Double v) { this.precio = v; }
+    public Double getPrecioMensual() { return precioMensual; }
+    public void setPrecioMensual(Double v) { this.precioMensual = v; }
+    public Double getPrecioAnual() { return precioAnual; }
+    public void setPrecioAnual(Double v) { this.precioAnual = v; }
     public TipoPrecio getTipoPrecio() { return tipoPrecio; }
     public void setTipoPrecio(TipoPrecio v) { this.tipoPrecio = v; }
     public boolean isMostrarPrecio() { return mostrarPrecio; }
