@@ -47,11 +47,14 @@ public class Sistema {
     /** Precio mensual (opcional; se pueden ofrecer varios tipos de pago a la vez). */
     private Double precioMensual;
 
-    /** Precio anual (opcional). */
+    /** Precio anual de mantenimiento (opcional). */
     private Double precioAnual;
 
-    /** Cargo de licencia por única vez, adicional al plan mensual/anual si corresponde. */
+    /** Licencia de uso: pago único. */
     private Double precioLicencia;
+
+    /** Si el mantenimiento es obligatorio cuando existe licencia. Null conserva el comportamiento anterior. */
+    private Boolean mantenimientoObligatorio = true;
 
     @Enumerated(EnumType.STRING)
     @Column(length = 20)
@@ -123,6 +126,8 @@ public class Sistema {
     public void setPrecioAnual(Double v) { this.precioAnual = v; }
     public Double getPrecioLicencia() { return precioLicencia; }
     public void setPrecioLicencia(Double v) { this.precioLicencia = v; }
+    public boolean isMantenimientoObligatorio() { return mantenimientoObligatorio == null || mantenimientoObligatorio; }
+    public void setMantenimientoObligatorio(Boolean v) { this.mantenimientoObligatorio = v; }
     public TipoPrecio getTipoPrecio() { return tipoPrecio; }
     public void setTipoPrecio(TipoPrecio v) { this.tipoPrecio = v; }
     public boolean isMostrarPrecio() { return mostrarPrecio; }
