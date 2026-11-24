@@ -168,6 +168,11 @@ public class SiteConfig {
     private String sistemasSubtitulo;
 
     @Column(length = 120)
+    private String proyectosTitulo;
+    @Column(length = 300)
+    private String proyectosSubtitulo;
+
+    @Column(length = 120)
     private String contactoTitulo;
     @Column(length = 300)
     private String contactoSubtitulo;
@@ -313,6 +318,10 @@ public class SiteConfig {
     public void setSistemasTitulo(String v) { this.sistemasTitulo = v; }
     public String getSistemasSubtitulo() { return sistemasSubtitulo; }
     public void setSistemasSubtitulo(String v) { this.sistemasSubtitulo = v; }
+    public String getProyectosTitulo() { return proyectosTitulo; }
+    public void setProyectosTitulo(String v) { this.proyectosTitulo = v; }
+    public String getProyectosSubtitulo() { return proyectosSubtitulo; }
+    public void setProyectosSubtitulo(String v) { this.proyectosSubtitulo = v; }
     public String getContactoTitulo() { return contactoTitulo; }
     public void setContactoTitulo(String v) { this.contactoTitulo = v; }
     public String getContactoSubtitulo() { return contactoSubtitulo; }
